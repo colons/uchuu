@@ -10,7 +10,9 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        urlField.text = "https://www.youtube.com/watch?v=1Cs0qyG78qY"
+        if (urlField.text == nil) || (urlField.text == "") {
+            urlField.text = "https://www.youtube.com/watch?v=1Cs0qyG78qY"
+        }
         super.viewDidAppear(animated)
     }
 

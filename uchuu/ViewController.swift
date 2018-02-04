@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Video URL", message: "Please provide the web URL of the video you want to play", preferredStyle: .alert)
         alert.addTextField(configurationHandler: { textField in
             urlField = textField
-            textField.text = "https://www.youtube.com/watch?v=Dz2aUfV8Oi8"
+            textField.text = "https://www.youtube.com/watch?v=1Cs0qyG78qY"
         })
         alert.addAction(UIAlertAction(title: "Play", style: .default, handler: { action in
             self.playVideo(url: urlField!.text!)
@@ -31,6 +31,8 @@ class ViewController: UIViewController {
         let player = AVPlayer(playerItem: item)
         let playerController = AVPlayerViewController()
         playerController.player = player
+        playerController.delegate = UchuuPlayerDelegate.sharedInstance
+
         present(playerController, animated: true) {
             player.play()
         }

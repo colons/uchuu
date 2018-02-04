@@ -12,6 +12,7 @@
 		1C2222541FF8281F00728400 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2222521FF8281F00728400 /* Main.storyboard */; };
 		1C2222561FF8281F00728400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2222551FF8281F00728400 /* Assets.xcassets */; };
 		1C2222591FF8281F00728400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2222571FF8281F00728400 /* LaunchScreen.storyboard */; };
+		1C7DE8F220274B5A006C622A /* PlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7DE8F120274B5A006C622A /* PlayerDelegate.swift */; };
 		1CAF13EC2027302A0097B83C /* YtdlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF13EB2027302A0097B83C /* YtdlService.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		1C2222551FF8281F00728400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2222581FF8281F00728400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C22225A1FF8281F00728400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C7DE8F120274B5A006C622A /* PlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDelegate.swift; sourceTree = "<group>"; };
 		1CAF13EB2027302A0097B83C /* YtdlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YtdlService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 				1C2222551FF8281F00728400 /* Assets.xcassets */,
 				1C2222571FF8281F00728400 /* LaunchScreen.storyboard */,
 				1C22225A1FF8281F00728400 /* Info.plist */,
+				1C7DE8F120274B5A006C622A /* PlayerDelegate.swift */,
 			);
 			path = uchuu;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2222511FF8281F00728400 /* ViewController.swift in Sources */,
+				1C7DE8F220274B5A006C622A /* PlayerDelegate.swift in Sources */,
 				1CAF13EC2027302A0097B83C /* YtdlService.swift in Sources */,
 				1C22224F1FF8281F00728400 /* AppDelegate.swift in Sources */,
 			);

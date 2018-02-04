@@ -7,19 +7,27 @@ class ShareViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        var url = URLComponents(string: "uchuu://play")!
-        url.queryItems = [
-            URLQueryItem(name: "url", value: "https://youtu.be/6LOo6ocToHU"),
-        ]
-        var responder: UIResponder? = self as UIResponder
-        let selector = #selector(openURL(_:))
-        
-        while responder != nil {
-            if responder!.responds(to: selector) && responder != self {
-                responder!.perform(selector, with: url.url!)
-                return
+        let item = self.extensionContext!.inputItems.first as! NSExtensionItem
+        let attachment = item.attachments!.first as! NSItemProvider
+        attachment.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { urlItem, error in
+            let videoUrl = urlItem as! URL
+            var targetUrl = URLComponents(string: "uchuu://play")!
+
+            targetUrl.queryItems = [
+                URLQueryItem(name: "url", value: videoUrl.absoluteString),
+            ]
+            var responder: UIResponder? = self as UIResponder
+            let selector = #selector(self.openURL(_:))
+            
+            while responder != nil {
+                if responder!.responds(to: selector) && responder != self {
+                    responder!.perform(selector, with: targetUrl.url!)
+                    return
+                }
+                responder = responder?.next
             }
-            responder = responder?.next
-        }
+
+        })
+        
     }
 }

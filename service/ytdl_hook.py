@@ -1,6 +1,6 @@
 from youtube_dl import YoutubeDL
 
-ydl = YoutubeDL(params={'quiet': True})
+ydl = YoutubeDL(params={'quiet': True, 'noplaylist': True})
 
 
 def get_info_for(url):

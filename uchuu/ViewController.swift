@@ -3,24 +3,17 @@ import AVKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var urlField: UITextField!
+
+    @IBAction func playSpecifiedVideo(_ sender: UIButton) {
+        playVideo(url: urlField.text!)
+    }
+
     override func viewDidAppear(_ animated: Bool) {
+        urlField.text = "https://www.youtube.com/watch?v=1Cs0qyG78qY"
         super.viewDidAppear(animated)
-        askUserForVideo()
     }
-    
-    private func askUserForVideo() {
-        var urlField: UITextField?
-        let alert = UIAlertController(title: "Video URL", message: "Please provide the web URL of the video you want to play", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: { textField in
-            urlField = textField
-            textField.text = "https://www.youtube.com/watch?v=1Cs0qyG78qY"
-        })
-        alert.addAction(UIAlertAction(title: "Play", style: .default, handler: { action in
-            self.playVideo(url: urlField!.text!)
-        }))
-        present(alert, animated: true, completion: nil)
-    }
-    
+
     private func playVideo(url: String) {
         YtdlService().getVideoInfo(ytdlUrl: url, completionHandler: self.playFromYtdlInfo)
     }
@@ -37,12 +30,4 @@ class ViewController: UIViewController {
             player.play()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
-

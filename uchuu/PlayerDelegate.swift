@@ -4,10 +4,12 @@ class UchuuPlayerDelegate: NSObject, AVPlayerViewControllerDelegate {
     static let sharedInstance = UchuuPlayerDelegate()
 
     func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
-        completionHandler(true)
+        UIApplication.shared.keyWindow?.rootViewController!.present(playerViewController, animated: true, completion: {
+            completionHandler(true)
+        })
     }
 
     func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(_ playerViewController: AVPlayerViewController) -> Bool {
-        return false
+        return true
     }
 }

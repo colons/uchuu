@@ -32,12 +32,12 @@ class YtdlService {
         let item = AVPlayerItem(asset: asset)
         let player = AVPlayer(playerItem: item)
         playerController.player = player
-        playerController.delegate = UchuuPlayerDelegate.sharedInstance
         playerController.player!.play()
     }
 
     func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
         let playerController = AVPlayerViewController()
+        playerController.delegate = UchuuPlayerDelegate.sharedInstance
 
         getVideoInfo(ytdlUrl: ytdlUrl, completionHandler: { info in
             self.play(info, in:playerController)

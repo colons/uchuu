@@ -14,20 +14,11 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
     }
 
-    private func playVideo(url: String) {
-        YtdlService().getVideoInfo(ytdlUrl: url, completionHandler: self.playFromYtdlInfo)
-    }
-    
-    private func playFromYtdlInfo(info: VideoInfo) {
-        let asset = AVURLAsset(url: info.url, options: ["AVURLAssetHTTPHeaderFieldsKey": info.http_headers])
-        let item = AVPlayerItem(asset: asset)
-        let player = AVPlayer(playerItem: item)
-        let playerController = AVPlayerViewController()
-        playerController.player = player
-        playerController.delegate = UchuuPlayerDelegate.sharedInstance
-
-        present(playerController, animated: true) {
-            player.play()
+    public func playVideo(url: String) {
+        YtdlService().getPlayerController(ytdlUrl: url) { playerController in
+            self.present(playerController, animated: true) {
+                playerController.player!.play()
+            }
         }
     }
 }

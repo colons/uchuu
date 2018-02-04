@@ -1,3 +1,4 @@
+import AVKit
 import Foundation
 
 struct VideoInfo: Codable {
@@ -6,7 +7,7 @@ struct VideoInfo: Codable {
 }
 
 class YtdlService {
-    func getVideoInfo(ytdlUrl:String, completionHandler: @escaping (VideoInfo) -> Void) {
+    func getVideoInfo(ytdlUrl: String, completionHandler: @escaping (VideoInfo) -> Void) {
         var url = URLComponents(string: "https://uchuu.colons.co/")!
         url.queryItems = [
             URLQueryItem(name: "url", value: ytdlUrl),
@@ -24,5 +25,22 @@ class YtdlService {
             completionHandler(videoInfo)
         }
         task.resume()
+    }
+    
+    private func getPlayerControllerFrom(_ info: VideoInfo) -> AVPlayerViewController {
+        let asset = AVURLAsset(url: info.url, options: ["AVURLAssetHTTPHeaderFieldsKey": info.http_headers])
+        let item = AVPlayerItem(asset: asset)
+        let player = AVPlayer(playerItem: item)
+        let playerController = AVPlayerViewController()
+        playerController.player = player
+        playerController.delegate = UchuuPlayerDelegate.sharedInstance
+
+        return playerController
+    }
+
+    func getPlayerController(ytdlUrl: String, completionHandler: @escaping (AVPlayerViewController) -> Void) {
+        getVideoInfo(ytdlUrl: ytdlUrl, completionHandler: { info in
+            completionHandler(self.getPlayerControllerFrom(info))
+        });
     }
 }

@@ -22,12 +22,11 @@ class ShareViewController: UIViewController {
             while responder != nil {
                 if responder!.responds(to: selector) && responder != self {
                     responder!.perform(selector, with: targetUrl.url!)
-                    return
+                    break
                 }
                 responder = responder?.next
             }
-
+            exit(0)
         })
-        
     }
 }

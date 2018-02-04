@@ -9,13 +9,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let components = URLComponents(string: url.absoluteString)
+        let playerController = YtdlService().getPlayerController(ytdlUrl: components!.queryItems![0].value!)
 
-        // we really need to do a better job of validating these
-        YtdlService().getPlayerController(ytdlUrl: components!.queryItems![0].value!) { playerController in
-            application.keyWindow?.rootViewController!.present(playerController, animated: true) {
-                playerController.player!.play()
-            }
-        }
+        application.keyWindow?.rootViewController!.present(playerController, animated: true)
 
         return true
     }

@@ -15,10 +15,7 @@ class ViewController: UIViewController {
     }
 
     public func playVideo(url: String) {
-        YtdlService().getPlayerController(ytdlUrl: url) { playerController in
-            self.present(playerController, animated: true) {
-                playerController.player!.play()
-            }
-        }
+        let playerController = YtdlService().getPlayerController(ytdlUrl: url)
+        self.present(playerController, animated: true)
     }
 }

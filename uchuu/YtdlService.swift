@@ -27,20 +27,22 @@ class YtdlService {
         task.resume()
     }
     
-    private func getPlayerControllerFrom(_ info: VideoInfo) -> AVPlayerViewController {
+    private func play(_ info: VideoInfo, in playerController: AVPlayerViewController) {
         let asset = AVURLAsset(url: info.url, options: ["AVURLAssetHTTPHeaderFieldsKey": info.http_headers])
         let item = AVPlayerItem(asset: asset)
         let player = AVPlayer(playerItem: item)
-        let playerController = AVPlayerViewController()
         playerController.player = player
         playerController.delegate = UchuuPlayerDelegate.sharedInstance
-
-        return playerController
+        playerController.player!.play()
     }
 
-    func getPlayerController(ytdlUrl: String, completionHandler: @escaping (AVPlayerViewController) -> Void) {
+    func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
+        let playerController = AVPlayerViewController()
+
         getVideoInfo(ytdlUrl: ytdlUrl, completionHandler: { info in
-            completionHandler(self.getPlayerControllerFrom(info))
+            self.play(info, in:playerController)
         });
+
+        return playerController
     }
 }

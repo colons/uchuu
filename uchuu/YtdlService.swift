@@ -30,13 +30,14 @@ class YtdlService {
     private func play(_ info: VideoInfo, in playerController: AVPlayerViewController) {
         let asset = AVURLAsset(url: info.url, options: ["AVURLAssetHTTPHeaderFieldsKey": info.http_headers])
         let item = AVPlayerItem(asset: asset)
-        let player = AVPlayer(playerItem: item)
-        playerController.player = player
+        playerController.player!.replaceCurrentItem(with: item)
         playerController.player!.play()
     }
 
     func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
         let playerController = AVPlayerViewController()
+        playerController.player = AVPlayer()
+
         playerController.delegate = UchuuPlayerDelegate.sharedInstance
 
         getVideoInfo(ytdlUrl: ytdlUrl, completionHandler: { info in

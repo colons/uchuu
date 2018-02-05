@@ -15,7 +15,7 @@
 		1C60AA9320275D56000FF025 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60AA9220275D56000FF025 /* ShareViewController.swift */; };
 		1C60AA9620275D56000FF025 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C60AA9420275D56000FF025 /* MainInterface.storyboard */; };
 		1C60AA9A20275D56000FF025 /* Watch in uchuu.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1C60AA9020275D56000FF025 /* Watch in uchuu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1C7DE8F220274B5A006C622A /* PlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7DE8F120274B5A006C622A /* PlayerDelegate.swift */; };
+		1C7DE8F220274B5A006C622A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7DE8F120274B5A006C622A /* Player.swift */; };
 		1CAF13EC2027302A0097B83C /* YtdlService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAF13EB2027302A0097B83C /* YtdlService.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +55,7 @@
 		1C60AA9220275D56000FF025 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		1C60AA9520275D56000FF025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		1C60AA9720275D56000FF025 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C7DE8F120274B5A006C622A /* PlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDelegate.swift; sourceTree = "<group>"; };
+		1C7DE8F120274B5A006C622A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		1CAF13EB2027302A0097B83C /* YtdlService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YtdlService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +105,7 @@
 				1C2222551FF8281F00728400 /* Assets.xcassets */,
 				1C2222571FF8281F00728400 /* LaunchScreen.storyboard */,
 				1C22225A1FF8281F00728400 /* Info.plist */,
-				1C7DE8F120274B5A006C622A /* PlayerDelegate.swift */,
+				1C7DE8F120274B5A006C622A /* Player.swift */,
 			);
 			path = uchuu;
 			sourceTree = "<group>";
@@ -229,7 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C2222511FF8281F00728400 /* ViewController.swift in Sources */,
-				1C7DE8F220274B5A006C622A /* PlayerDelegate.swift in Sources */,
+				1C7DE8F220274B5A006C622A /* Player.swift in Sources */,
 				1CAF13EC2027302A0097B83C /* YtdlService.swift in Sources */,
 				1C22224F1FF8281F00728400 /* AppDelegate.swift in Sources */,
 			);

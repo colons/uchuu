@@ -43,7 +43,8 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="vWd-M2-Gop" secondAttribute="trailing" id="cm4-xb-U7u"/>
+                                    <constraint firstItem="vWd-M2-Gop" firstAttribute="leading" secondItem="kC9-TB-Jvs" secondAttribute="leading" id="6qg-AS-H7A"/>
+                                    <constraint firstAttribute="trailing" secondItem="vWd-M2-Gop" secondAttribute="trailing" id="Ktz-LM-itt"/>
                                 </constraints>
                             </stackView>
                         </subviews>

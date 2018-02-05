@@ -20,11 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let audioSession = AVAudioSession.sharedInstance()
 
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayback)
-        } catch {
-            print("Setting category to AVAudioSessionCategoryPlayback failed.")
-        }
+        do { try audioSession.setCategory(AVAudioSessionCategoryPlayback) }
+        catch { print("Setting category to AVAudioSessionCategoryPlayback failed.") }
 
         return true
     }
@@ -41,11 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         let playerController = getCurrentPlayerController(application)
-        if playerController != nil {
+        if playerController != nil && playerController!.player != nil {
             backgroundedPlayer = playerController!.player
             playerController!.player = nil
-        } else {
-            backgroundedPlayer = nil
         }
     }
 
@@ -56,8 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         let playerController = getCurrentPlayerController(application)
-        if playerController != nil {
-            print("restoring")
+        if playerController != nil && backgroundedPlayer != nil {
             playerController!.player = backgroundedPlayer
             backgroundedPlayer = nil
         }

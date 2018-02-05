@@ -31,14 +31,22 @@ class YtdlService {
         let asset = AVURLAsset(url: info.url, options: ["AVURLAssetHTTPHeaderFieldsKey": info.http_headers])
         let item = AVPlayerItem(asset: asset)
         playerController.player!.replaceCurrentItem(with: item)
+
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch { print("Failed to get control of media session :<") }
+
         playerController.player!.play()
     }
 
     func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
         let playerController = AVPlayerViewController()
-        playerController.player = AVPlayer()
+        let player = AVPlayer()
+
+        setupNowPlayingStuff(player)
 
         playerController.delegate = UchuuPlayerDelegate.sharedInstance
+        playerController.player = player
 
         getVideoInfo(ytdlUrl: ytdlUrl, completionHandler: { info in
             self.play(info, in:playerController)

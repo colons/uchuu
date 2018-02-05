@@ -4,8 +4,13 @@ import AVKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var urlField: UITextField!
+    @IBOutlet weak var playButton: UIButton!
 
-    @IBAction func playSpecifiedVideo(_ sender: UIButton) {
+    @IBAction func plressPlayButton(_ sender: UIButton) {
+        playVideo(url: urlField.text!)
+    }
+
+    @IBAction func submitUrlField(_ sender: UITextField) {
         playVideo(url: urlField.text!)
     }
 

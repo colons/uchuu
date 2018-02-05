@@ -32,13 +32,16 @@
                                         <rect key="frame" x="0.0" y="28.5" width="288" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="url"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" textContentType="url"/>
+                                        <connections>
+                                            <action selector="submitUrlField:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="h7U-Hj-0hk"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9g-ve-1kV">
                                         <rect key="frame" x="0.0" y="66.5" width="30" height="30"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
-                                            <action selector="playSpecifiedVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y3q-cA-qYf"/>
+                                            <action selector="plressPlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pNd-aZ-EAp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -57,6 +60,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="playButton" destination="d9g-ve-1kV" id="Doh-hJ-jbS"/>
                         <outlet property="urlField" destination="vWd-M2-Gop" id="TwO-lv-8sI"/>
                     </connections>
                 </viewController>

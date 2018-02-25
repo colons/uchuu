@@ -1,15 +1,23 @@
 from youtube_dl import YoutubeDL
 
-ydl = YoutubeDL(params={'quiet': True, 'noplaylist': True})
+ydl = YoutubeDL(params={'quiet': True})
+
+
+def pick_format_for_item(item):
+    selector = ydl.build_format_selector('best[ext=mp4]')
+    item['selected_format'], = selector({'formats': item['formats']})
 
 
 def get_info_for(url):
-    selector = ydl.build_format_selector('best[ext=mp4]')
     info = ydl.extract_info(url, download=False)
-    ours, = selector({
-        'formats': info['formats'],
-    })
-    return ours
+
+    if info.get('_type') == 'playlist':
+        for entry in info['entries']:
+            pick_format_for_item(entry)
+    else:
+        pick_format_for_item(info)
+
+    return info
 
 if __name__ == '__main__':
     import json

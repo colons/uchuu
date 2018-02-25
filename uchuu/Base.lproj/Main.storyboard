@@ -50,7 +50,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                         <connections>
-                                            <action selector="submitUrlField:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="h7U-Hj-0hk"/>
+                                            <action selector="submitUrlField:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="RnO-iS-UyG"/>
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GvP-Ab-AwH">
@@ -60,7 +60,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <state key="normal" title="Play"/>
                                                 <connections>
-                                                    <action selector="plressPlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pNd-aZ-EAp"/>
+                                                    <action selector="pressPlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SjW-DG-EgI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXd-w7-jAS">

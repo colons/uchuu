@@ -1,13 +1,33 @@
 import AVKit
 import Foundation
 
-struct VideoInfo: Codable {
+struct YTDLResponse: Codable {
+    var _type: String?
+}
+
+struct VideoFormat: Codable {
     var http_headers: [String: String]
     var url: URL
 }
 
+struct VideoInfo: Codable {
+    var title: String
+    var description: String
+    var uploader: String
+    var webpage_url: URL
+    
+    var selected_format: VideoFormat
+}
+
+struct Playlist: Codable {
+    var entries: [VideoInfo]
+    var title: String
+    var webpage_url: URL
+    var uploader: String
+}
+
 class YtdlService {
-    func getVideoInfo(ytdlUrl: String, completionHandler: @escaping (VideoInfo) -> Void) {
+    func getPlaylist(ytdlUrl: String, completionHandler: @escaping (Playlist) -> Void) {
         var url = URLComponents(string: "https://uchuu.colons.co/")!
         url.queryItems = [
             URLQueryItem(name: "url", value: ytdlUrl),
@@ -21,35 +41,49 @@ class YtdlService {
                 print("bad http code")
                 return
             }
-            let videoInfo = try! JSONDecoder().decode(VideoInfo.self, from: data!)
-            completionHandler(videoInfo)
+            let responseData = try! JSONDecoder().decode(YTDLResponse.self, from: data!)
+
+            if (responseData._type != nil) && (responseData._type! == "playlist") {
+                completionHandler(try! JSONDecoder().decode(Playlist.self, from: data!))
+            } else {
+                let videoInfo = try! JSONDecoder().decode(VideoInfo.self, from: data!)
+                completionHandler(Playlist(
+                    entries: [videoInfo],
+                    title: videoInfo.title,
+                    webpage_url: videoInfo.webpage_url,
+                    uploader: videoInfo.uploader
+                ))
+            }
         }
         task.resume()
     }
     
-    private func play(_ info: VideoInfo, in playerController: AVPlayerViewController) {
-        let asset = AVURLAsset(url: info.url, options: ["AVURLAssetHTTPHeaderFieldsKey": info.http_headers])
-        let item = AVPlayerItem(asset: asset)
-        playerController.player!.replaceCurrentItem(with: item)
+    private func play(_ playlist: Playlist, in queuePlayer: AVQueuePlayer) {
+        queuePlayer.removeAllItems()
+
+        for entry in playlist.entries {
+            let asset = AVURLAsset(url: entry.selected_format.url, options: ["AVURLAssetHTTPHeaderFieldsKey": entry.selected_format.http_headers])
+            queuePlayer.insert(AVPlayerItem(asset: asset), after: nil)
+        }
 
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch { print("Failed to get control of media session :<") }
 
-        playerController.player!.play()
+        queuePlayer.play()
     }
 
     func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
         let playerController = AVPlayerViewController()
-        let player = AVPlayer()
+        let player = AVQueuePlayer()
 
         setupNowPlayingStuff(player)
 
         playerController.delegate = UchuuPlayerDelegate.sharedInstance
         playerController.player = player
 
-        getVideoInfo(ytdlUrl: ytdlUrl, completionHandler: { info in
-            self.play(info, in:playerController)
+        getPlaylist(ytdlUrl: ytdlUrl, completionHandler: { playlist in
+            self.play(playlist, in:player)
         });
 
         return playerController

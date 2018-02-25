@@ -6,7 +6,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var urlField: UITextField!
     @IBOutlet weak var playButton: UIButton!
 
-    @IBAction func plressPlayButton(_ sender: UIButton) {
+    @IBAction func pressPlayButton(_ sender: UIButton) {
         playVideo(url: urlField.text!)
     }
 

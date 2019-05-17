@@ -12,6 +12,14 @@
 		1C2222541FF8281F00728400 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2222521FF8281F00728400 /* Main.storyboard */; };
 		1C2222561FF8281F00728400 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2222551FF8281F00728400 /* Assets.xcassets */; };
 		1C2222591FF8281F00728400 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2222571FF8281F00728400 /* LaunchScreen.storyboard */; };
+		1C2816A2228DB71D00D0C231 /* Support in Resources */ = {isa = PBXBuildFile; fileRef = 1C2816A1228DB71D00D0C231 /* Support */; };
+		1C2816A4228DB73400D0C231 /* libbzip2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2816A3228DB73400D0C231 /* libbzip2.a */; };
+		1C2816A6228DB73400D0C231 /* libOpenSSL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2816A5228DB73400D0C231 /* libOpenSSL.a */; };
+		1C2816A8228DB73400D0C231 /* libPython.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2816A7228DB73400D0C231 /* libPython.a */; };
+		1C2816AA228DB73400D0C231 /* libxz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2816A9228DB73400D0C231 /* libxz.a */; };
+		1C2816B1228DC07800D0C231 /* PythonBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C2816B0228DC07800D0C231 /* PythonBridge.m */; };
+		1C2816B4228DC82700D0C231 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2816B3228DC82600D0C231 /* libsqlite3.tbd */; };
+		1C2816B6228DC87700D0C231 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2816B5228DC87700D0C231 /* libz.tbd */; };
 		1C60AA9320275D56000FF025 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60AA9220275D56000FF025 /* ShareViewController.swift */; };
 		1C60AA9620275D56000FF025 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C60AA9420275D56000FF025 /* MainInterface.storyboard */; };
 		1C60AA9A20275D56000FF025 /* Watch in uchuu.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1C60AA9020275D56000FF025 /* Watch in uchuu.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -51,6 +59,20 @@
 		1C2222551FF8281F00728400 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C2222581FF8281F00728400 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C22225A1FF8281F00728400 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C281694228DB3A400D0C231 /* libbzip2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbzip2.a; path = Support/BZip2/libbzip2.a; sourceTree = "<group>"; };
+		1C281696228DB3A700D0C231 /* libOpenSSL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOpenSSL.a; path = Support/OpenSSL/libOpenSSL.a; sourceTree = "<group>"; };
+		1C281698228DB3AA00D0C231 /* libPython.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPython.a; path = Support/Python/libPython.a; sourceTree = "<group>"; };
+		1C28169A228DB3AD00D0C231 /* libxz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxz.a; path = Support/XZ/libxz.a; sourceTree = "<group>"; };
+		1C2816A1228DB71D00D0C231 /* Support */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Support; sourceTree = "<group>"; };
+		1C2816A3228DB73400D0C231 /* libbzip2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libbzip2.a; path = uchuu/Support/BZip2/libbzip2.a; sourceTree = "<group>"; };
+		1C2816A5228DB73400D0C231 /* libOpenSSL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOpenSSL.a; path = uchuu/Support/OpenSSL/libOpenSSL.a; sourceTree = "<group>"; };
+		1C2816A7228DB73400D0C231 /* libPython.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPython.a; path = uchuu/Support/Python/libPython.a; sourceTree = "<group>"; };
+		1C2816A9228DB73400D0C231 /* libxz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxz.a; path = uchuu/Support/XZ/libxz.a; sourceTree = "<group>"; };
+		1C2816AB228DBBC300D0C231 /* PythonBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PythonBridge.h; sourceTree = "<group>"; };
+		1C2816B0228DC07800D0C231 /* PythonBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PythonBridge.m; sourceTree = "<group>"; };
+		1C2816B2228DC1ED00D0C231 /* SwiftPythonBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftPythonBridge.h; sourceTree = "<group>"; };
+		1C2816B3228DC82600D0C231 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		1C2816B5228DC87700D0C231 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		1C60AA9020275D56000FF025 /* Watch in uchuu.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Watch in uchuu.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C60AA9220275D56000FF025 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		1C60AA9520275D56000FF025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -64,6 +86,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C2816B6228DC87700D0C231 /* libz.tbd in Frameworks */,
+				1C2816B4228DC82700D0C231 /* libsqlite3.tbd in Frameworks */,
+				1C2816A4228DB73400D0C231 /* libbzip2.a in Frameworks */,
+				1C2816A6228DB73400D0C231 /* libOpenSSL.a in Frameworks */,
+				1C2816A8228DB73400D0C231 /* libPython.a in Frameworks */,
+				1C2816AA228DB73400D0C231 /* libxz.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +111,7 @@
 				1C22224D1FF8281F00728400 /* uchuu */,
 				1C60AA9120275D56000FF025 /* Watch in uchuu */,
 				1C22224C1FF8281F00728400 /* Products */,
+				1C281693228DB3A400D0C231 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,12 +131,33 @@
 				1CAF13EB2027302A0097B83C /* YtdlService.swift */,
 				1C2222501FF8281F00728400 /* ViewController.swift */,
 				1C2222521FF8281F00728400 /* Main.storyboard */,
+				1C2816A1228DB71D00D0C231 /* Support */,
 				1C2222551FF8281F00728400 /* Assets.xcassets */,
 				1C2222571FF8281F00728400 /* LaunchScreen.storyboard */,
 				1C22225A1FF8281F00728400 /* Info.plist */,
 				1C7DE8F120274B5A006C622A /* Player.swift */,
+				1C2816AB228DBBC300D0C231 /* PythonBridge.h */,
+				1C2816B2228DC1ED00D0C231 /* SwiftPythonBridge.h */,
+				1C2816B0228DC07800D0C231 /* PythonBridge.m */,
 			);
 			path = uchuu;
+			sourceTree = "<group>";
+		};
+		1C281693228DB3A400D0C231 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C2816B5228DC87700D0C231 /* libz.tbd */,
+				1C2816B3228DC82600D0C231 /* libsqlite3.tbd */,
+				1C2816A3228DB73400D0C231 /* libbzip2.a */,
+				1C2816A5228DB73400D0C231 /* libOpenSSL.a */,
+				1C2816A7228DB73400D0C231 /* libPython.a */,
+				1C2816A9228DB73400D0C231 /* libxz.a */,
+				1C281694228DB3A400D0C231 /* libbzip2.a */,
+				1C281696228DB3A700D0C231 /* libOpenSSL.a */,
+				1C281698228DB3AA00D0C231 /* libPython.a */,
+				1C28169A228DB3AD00D0C231 /* libxz.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1C60AA9120275D56000FF025 /* Watch in uchuu */ = {
@@ -170,6 +220,7 @@
 				TargetAttributes = {
 					1C22224A1FF8281F00728400 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -207,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C2816A2228DB71D00D0C231 /* Support in Resources */,
 				1C2222591FF8281F00728400 /* LaunchScreen.storyboard in Resources */,
 				1C2222561FF8281F00728400 /* Assets.xcassets in Resources */,
 				1C2222541FF8281F00728400 /* Main.storyboard in Resources */,
@@ -232,6 +284,7 @@
 				1C7DE8F220274B5A006C622A /* Player.swift in Sources */,
 				1CAF13EC2027302A0097B83C /* YtdlService.swift in Sources */,
 				1C22224F1FF8281F00728400 /* AppDelegate.swift in Sources */,
+				1C2816B1228DC07800D0C231 /* PythonBridge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,11 +382,26 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}",
+					"${PROJECT_DIR}/uchuu/Support/XZ/Headers",
+					"${PROJECT_DIR}/uchuu/Support/Python/Headers",
+					"${PROJECT_DIR}/uchuu/Support/OpenSSL/Headers",
+					"${PROJECT_DIR}/uchuu/Support/BZip2/Headers",
+					"${PROJECT_DIR}/uchuu/Support/Python/Resources/include/python3.6m",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LIBRARY_SEARCH_PATHS = (
+					"${PROJECT_DIR}/uchuu/Support/BZip2",
+					"${PROJECT_DIR}/uchuu/Support/OpenSSL",
+					"${PROJECT_DIR}/uchuu/Support/Python",
+					"${PROJECT_DIR}/uchuu/Support/XZ",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/uchuu/SwiftPythonBridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -380,9 +448,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"${PROJECT_DIR}",
+					"${PROJECT_DIR}/uchuu/Support/XZ/Headers",
+					"${PROJECT_DIR}/uchuu/Support/Python/Headers",
+					"${PROJECT_DIR}/uchuu/Support/OpenSSL/Headers",
+					"${PROJECT_DIR}/uchuu/Support/BZip2/Headers",
+					"${PROJECT_DIR}/uchuu/Support/Python/Resources/include/python3.6m",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LIBRARY_SEARCH_PATHS = (
+					"${PROJECT_DIR}/uchuu/Support/BZip2",
+					"${PROJECT_DIR}/uchuu/Support/OpenSSL",
+					"${PROJECT_DIR}/uchuu/Support/Python",
+					"${PROJECT_DIR}/uchuu/Support/XZ",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/uchuu/SwiftPythonBridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -393,12 +476,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8Y5D933GXB;
+				HEADER_SEARCH_PATHS = "${inherited}";
 				INFOPLIST_FILE = uchuu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = co.colons.uchuu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/uchuu/SwiftPythonBridge.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -409,12 +497,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8Y5D933GXB;
+				HEADER_SEARCH_PATHS = "${inherited}";
 				INFOPLIST_FILE = uchuu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = co.colons.uchuu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/uchuu/SwiftPythonBridge.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -428,12 +520,15 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8Y5D933GXB;
+				HEADER_SEARCH_PATHS = "${inherited}";
 				INFOPLIST_FILE = "Watch in uchuu/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.colons.uchuu.Watch-in-uchuu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,12 +542,15 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8Y5D933GXB;
+				HEADER_SEARCH_PATHS = "${inherited}";
 				INFOPLIST_FILE = "Watch in uchuu/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LIBRARY_SEARCH_PATHS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = "co.colons.uchuu.Watch-in-uchuu";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

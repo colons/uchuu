@@ -1,0 +1,3 @@
+[submodule "uchuu/Support/imports/youtube-dl"]
+	path = uchuu/Support/imports/youtube-dl
+	url = https://github.com/ytdl-org/youtube-dl.git

@@ -28,6 +28,57 @@ struct Playlist: Codable {
 
 class YtdlService {
     func getPlaylist(ytdlUrl: String, completionHandler: @escaping (Playlist) -> Void) {
+        let data = PythonBridge.run(ytdlUrl)
+        let responseData = try! JSONDecoder().decode(YTDLResponse.self, from: data!)
+        
+        if (responseData._type != nil) && (responseData._type! == "playlist") {
+            completionHandler(try! JSONDecoder().decode(Playlist.self, from: data!))
+        } else {
+            let videoInfo = try! JSONDecoder().decode(VideoInfo.self, from: data!)
+            completionHandler(Playlist(
+                entries: [videoInfo],
+                title: videoInfo.title,
+                webpage_url: videoInfo.webpage_url,
+                uploader: videoInfo.uploader
+            ))
+        }
+    }
+
+    private func play(_ playlist: Playlist, in queuePlayer: AVQueuePlayer) {
+        queuePlayer.removeAllItems()
+        
+        for entry in playlist.entries {
+            let asset = AVURLAsset(url: entry.selected_format.url, options: ["AVURLAssetHTTPHeaderFieldsKey": entry.selected_format.http_headers])
+            queuePlayer.insert(AVPlayerItem(asset: asset), after: nil)
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch { print("Failed to get control of media session :<") }
+        
+        queuePlayer.play()
+    }
+
+    func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
+        let playerController = AVPlayerViewController()
+        let player = AVQueuePlayer()
+        
+        setupNowPlayingStuff(player)
+        
+        playerController.delegate = UchuuPlayerDelegate.sharedInstance
+        playerController.player = player
+        
+        getPlaylist(ytdlUrl: ytdlUrl, completionHandler: { playlist in
+            self.play(playlist, in:player)
+        });
+        
+        return playerController
+    }
+}
+
+/*
+class YtdlService {
+    func getPlaylist(ytdlUrl: String, completionHandler: @escaping (Playlist) -> Void) {
         var url = URLComponents(string: "https://uchuu.colons.co/")!
         url.queryItems = [
             URLQueryItem(name: "url", value: ytdlUrl),
@@ -57,35 +108,4 @@ class YtdlService {
         }
         task.resume()
     }
-    
-    private func play(_ playlist: Playlist, in queuePlayer: AVQueuePlayer) {
-        queuePlayer.removeAllItems()
-
-        for entry in playlist.entries {
-            let asset = AVURLAsset(url: entry.selected_format.url, options: ["AVURLAssetHTTPHeaderFieldsKey": entry.selected_format.http_headers])
-            queuePlayer.insert(AVPlayerItem(asset: asset), after: nil)
-        }
-
-        do {
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch { print("Failed to get control of media session :<") }
-
-        queuePlayer.play()
-    }
-
-    func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
-        let playerController = AVPlayerViewController()
-        let player = AVQueuePlayer()
-
-        setupNowPlayingStuff(player)
-
-        playerController.delegate = UchuuPlayerDelegate.sharedInstance
-        playerController.player = player
-
-        getPlaylist(ytdlUrl: ytdlUrl, completionHandler: { playlist in
-            self.play(playlist, in:player)
-        });
-
-        return playerController
-    }
-}
+} */

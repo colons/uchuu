@@ -10,10 +10,6 @@ class UchuuPlayerDelegate: NSObject, AVPlayerViewControllerDelegate {
             completionHandler(true)
         })
     }
-
-    func playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart(_ playerViewController: AVPlayerViewController) -> Bool {
-        return true
-    }
 }
 
 func setupNowPlayingStuff(_ player: AVPlayer) {

@@ -32,29 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func getCurrentPlayerController(_ application: UIApplication) -> AVPlayerViewController? {
+        NSLog("getting current player")
         let presentedView = application.keyWindow?.rootViewController?.presentedViewController
         return presentedView as? AVPlayerViewController
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         let playerController = getCurrentPlayerController(application)
-        if playerController != nil && playerController!.player != nil {
-            backgroundedPlayer = playerController!.player
-            playerController!.player = nil
+        if playerController != nil && playerController!.player != nil {            backgroundedPlayer = playerController!.player
         }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        let playerController = getCurrentPlayerController(application)
-        if playerController != nil && backgroundedPlayer != nil {
-            playerController!.player = backgroundedPlayer
-            backgroundedPlayer = nil
-        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

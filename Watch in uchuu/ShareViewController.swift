@@ -8,8 +8,8 @@ class ShareViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let item = self.extensionContext!.inputItems.first as! NSExtensionItem
-        let attachment = item.attachments!.first as! NSItemProvider
-        attachment.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { urlItem, error in
+        let attachment = item.attachments!.first
+        attachment!.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { urlItem, error in
             let videoUrl = urlItem as! URL
             var targetUrl = URLComponents(string: "uchuu://play")!
 

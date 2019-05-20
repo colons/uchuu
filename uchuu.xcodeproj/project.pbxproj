@@ -393,7 +393,7 @@
 					"${PROJECT_DIR}/uchuu/Support/BZip2/Headers",
 					"${PROJECT_DIR}/uchuu/Support/Python/Resources/include/python3.6m",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LIBRARY_SEARCH_PATHS = (
 					"${PROJECT_DIR}/uchuu/Support/BZip2",
 					"${PROJECT_DIR}/uchuu/Support/OpenSSL",
@@ -461,7 +461,7 @@
 					"${PROJECT_DIR}/uchuu/Support/BZip2/Headers",
 					"${PROJECT_DIR}/uchuu/Support/Python/Resources/include/python3.6m",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LIBRARY_SEARCH_PATHS = (
 					"${PROJECT_DIR}/uchuu/Support/BZip2",
 					"${PROJECT_DIR}/uchuu/Support/OpenSSL",

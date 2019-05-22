@@ -12,7 +12,7 @@ struct VideoFormat: Codable {
 
 struct VideoInfo: Codable {
     var title: String
-    var description: String
+    var description: String?
     var uploader: String
     var webpage_url: URL
     

@@ -75,37 +75,3 @@ class YtdlService {
         return playerController
     }
 }
-
-/*
-class YtdlService {
-    func getPlaylist(ytdlUrl: String, completionHandler: @escaping (Playlist) -> Void) {
-        var url = URLComponents(string: "https://uchuu.colons.co/")!
-        url.queryItems = [
-            URLQueryItem(name: "url", value: ytdlUrl),
-        ]
-        let task = URLSession.shared.dataTask(with: url.url!) { data, response, error in
-            if let error = error {
-                print("some kind of connection error: \(error)")
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                print("bad http code")
-                return
-            }
-            let responseData = try! JSONDecoder().decode(YTDLResponse.self, from: data!)
-
-            if (responseData._type != nil) && (responseData._type! == "playlist") {
-                completionHandler(try! JSONDecoder().decode(Playlist.self, from: data!))
-            } else {
-                let videoInfo = try! JSONDecoder().decode(VideoInfo.self, from: data!)
-                completionHandler(Playlist(
-                    entries: [videoInfo],
-                    title: videoInfo.title,
-                    webpage_url: videoInfo.webpage_url,
-                    uploader: videoInfo.uploader
-                ))
-            }
-        }
-        task.resume()
-    }
-} */

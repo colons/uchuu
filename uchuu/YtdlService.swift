@@ -1,6 +1,8 @@
 import AVKit
 import Foundation
 
+let ytdlQueue = DispatchQueue(label: "ytdlQueue", attributes: .concurrent)
+
 struct YTDLResponse: Codable {
     var _type: String?
 }
@@ -28,19 +30,21 @@ struct Playlist: Codable {
 
 class YtdlService {
     func getPlaylist(ytdlUrl: String, completionHandler: @escaping (Playlist) -> Void) {
-        let data = PythonBridge.run(ytdlUrl)
-        let responseData = try! JSONDecoder().decode(YTDLResponse.self, from: data!)
-        
-        if (responseData._type != nil) && (responseData._type! == "playlist") {
-            completionHandler(try! JSONDecoder().decode(Playlist.self, from: data!))
-        } else {
-            let videoInfo = try! JSONDecoder().decode(VideoInfo.self, from: data!)
-            completionHandler(Playlist(
-                entries: [videoInfo],
-                title: videoInfo.title,
-                webpage_url: videoInfo.webpage_url,
-                uploader: videoInfo.uploader
-            ))
+        ytdlQueue.async {
+            let data = PythonBridge.run(ytdlUrl)
+            let responseData = try! JSONDecoder().decode(YTDLResponse.self, from: data!)
+            
+            if (responseData._type != nil) && (responseData._type! == "playlist") {
+                completionHandler(try! JSONDecoder().decode(Playlist.self, from: data!))
+            } else {
+                let videoInfo = try! JSONDecoder().decode(VideoInfo.self, from: data!)
+                completionHandler(Playlist(
+                    entries: [videoInfo],
+                    title: videoInfo.title,
+                    webpage_url: videoInfo.webpage_url,
+                    uploader: videoInfo.uploader
+                ))
+            }
         }
     }
 

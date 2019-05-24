@@ -24,6 +24,7 @@ def get_info_for(url):
 
     return info
 
+
 def get_json_info_for(url):
     return json.dumps(get_info_for(url))
 

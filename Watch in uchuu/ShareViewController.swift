@@ -33,8 +33,10 @@ class ShareViewController: UIViewController {
                 self.openUchuu(videoUrl)
             })
             attachment.loadItem(forTypeIdentifier: "public.plain-text", options: nil, completionHandler: { urlItem, error in
-                guard let videoUrl = URL(string: urlItem as! String) else { return }
-                self.openUchuu(videoUrl)
+                if urlItem != nil {
+                    guard let videoUrl = URL(string: urlItem as! String) else { return }
+                    self.openUchuu(videoUrl)
+                }
             })
         }
     }

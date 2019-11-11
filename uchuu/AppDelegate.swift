@@ -2,20 +2,14 @@ import Foundation
 import AVKit
 import UIKit
 
-var currentPlayer: AVPlayerViewController?
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var backgroundedPlayer: AVPlayer?
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let shouldPresent = (currentPlayer == nil)
         let components = URLComponents(string: url.absoluteString)
-        let playerController = YtdlService().getPlayerController(ytdlUrl: components!.queryItems![0].value!)
-        if (shouldPresent) {
-            application.keyWindow?.rootViewController!.present(playerController, animated: true)
-        }
+        YtdlService().playURL(components!.queryItems![0].value!)
         return true
     }
 
@@ -34,10 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        let playerController = currentPlayer
-        if playerController != nil && playerController!.player != nil {
-            backgroundedPlayer = playerController!.player
-        }
+        //
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

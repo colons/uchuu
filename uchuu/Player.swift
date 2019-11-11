@@ -27,3 +27,20 @@ func setupNowPlayingStuff(_ player: AVPlayer) {
         return .success
     }
 }
+
+class UchuuPlaylistViewController: UIViewController {
+    var playerController = AVPlayerViewController()
+    var queuePlayer = AVQueuePlayer()
+    @IBOutlet weak var playerContainer: UIView!
+    @IBOutlet weak var playlistTable: UITableView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        playerContainer.addSubview(playerController.view)
+        playerController.view.frame = playerContainer.bounds
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSLog("im gone")  // we need to remove ourselves from the heirarchy
+    }
+}

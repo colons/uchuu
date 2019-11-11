@@ -50,7 +50,7 @@
                                         </connections>
                                     </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GvP-Ab-AwH">
-                                        <rect key="frame" x="0.0" y="70.5" width="164" height="30"/>
+                                        <rect key="frame" x="0.0" y="70.5" width="72" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d9g-ve-1kV">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -62,13 +62,6 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXd-w7-jAS">
                                                 <rect key="frame" x="38" y="0.0" width="34" height="30"/>
                                                 <state key="normal" title="Save"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fa3-We-Uvk">
-                                                <rect key="frame" x="80" y="0.0" width="84" height="30"/>
-                                                <state key="normal" title="Show Player"/>
-                                                <connections>
-                                                    <action selector="showPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="STj-2a-BhD"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -143,6 +136,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-684.375" y="120.4225352112676"/>
+        </scene>
+        <!--Uchuu Playlist View Controller-->
+        <scene sceneID="ZYb-si-s9i">
+            <objects>
+                <viewController storyboardIdentifier="playlist" id="4qP-nx-swS" customClass="UchuuPlaylistViewController" customModule="uchuu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Cr-uq-GQu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Aqf-Dq-Drk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJv-aS-rwP">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="sJv-aS-rwP" secondAttribute="height" multiplier="16:9" id="INm-Q2-zuz"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pfQ-gq-bUy">
+                                        <rect key="frame" x="0.0" y="180" width="320" height="388"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="T1q-1M-VY9" firstAttribute="trailing" secondItem="Aqf-Dq-Drk" secondAttribute="trailing" id="JUS-LF-bXO"/>
+                            <constraint firstItem="Aqf-Dq-Drk" firstAttribute="top" secondItem="T1q-1M-VY9" secondAttribute="top" id="LUv-Rs-PYY"/>
+                            <constraint firstItem="T1q-1M-VY9" firstAttribute="bottom" secondItem="Aqf-Dq-Drk" secondAttribute="bottom" id="Lwc-Ob-ThV"/>
+                            <constraint firstItem="Aqf-Dq-Drk" firstAttribute="leading" secondItem="T1q-1M-VY9" secondAttribute="leading" id="od3-JO-QUj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="T1q-1M-VY9"/>
+                    </view>
+                    <connections>
+                        <outlet property="playerContainer" destination="sJv-aS-rwP" id="L8A-2F-3Ly"/>
+                        <outlet property="playlistTable" destination="pfQ-gq-bUy" id="nKo-Qy-tJa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qah-mP-oJE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="170.625" y="120.4225352112676"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.91372549020000005" green="0.45098039220000002" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

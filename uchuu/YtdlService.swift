@@ -1,5 +1,5 @@
-import AVKit
 import Foundation
+import AVKit
 
 let ytdlQueue = DispatchQueue(label: "ytdlQueue", attributes: .concurrent)
 
@@ -48,36 +48,33 @@ class YtdlService {
         }
     }
 
-    private func play(_ playlist: Playlist, in queuePlayer: AVQueuePlayer) {
-        queuePlayer.removeAllItems()
+    private func play(_ playlist: Playlist, _ playlistViewController: UchuuPlaylistViewController) {
+        let qp = playlistViewController.playerController.player! as! AVQueuePlayer
+        NSLog(playlist.title)
         
         for entry in playlist.entries {
             let asset = AVURLAsset(url: entry.selected_format.url, options: ["AVURLAssetHTTPHeaderFieldsKey": entry.selected_format.http_headers])
-            queuePlayer.insert(AVPlayerItem(asset: asset), after: nil)
+            qp.insert(AVPlayerItem(asset: asset), after: nil)
         }
         
         do {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch { print("Failed to get control of media session :<") }
         
-        queuePlayer.play()
+        playlistViewController.playerController.player!.play()
     }
 
-    func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
-        if currentPlayer == nil {
-            currentPlayer = AVPlayerViewController()
-        }
-        let player = AVQueuePlayer()
-        
-        setupNowPlayingStuff(player)
-        
-        currentPlayer!.delegate = UchuuPlayerDelegate.sharedInstance
-        currentPlayer!.player = player
-        
+    func playURL(_ ytdlUrl: String) {
+        let playlistViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "playlist") as! UchuuPlaylistViewController
+        let queuePlayer = AVQueuePlayer()
+        playlistViewController.playerController.player = queuePlayer
+        UIApplication.shared.keyWindow?.rootViewController!.show(playlistViewController, sender: self)
+        setupNowPlayingStuff(queuePlayer)
         getPlaylist(ytdlUrl: ytdlUrl, completionHandler: { playlist in
-            self.play(playlist, in:player)
+            DispatchQueue.main.async {
+                playlistViewController.title = playlist.title
+            }
+            self.play(playlist, playlistViewController)
         });
-        
-        return currentPlayer!
     }
 }

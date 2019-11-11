@@ -64,18 +64,20 @@ class YtdlService {
     }
 
     func getPlayerController(ytdlUrl: String) -> AVPlayerViewController {
-        let playerController = AVPlayerViewController()
+        if currentPlayer == nil {
+            currentPlayer = AVPlayerViewController()
+        }
         let player = AVQueuePlayer()
         
         setupNowPlayingStuff(player)
         
-        playerController.delegate = UchuuPlayerDelegate.sharedInstance
-        playerController.player = player
+        currentPlayer!.delegate = UchuuPlayerDelegate.sharedInstance
+        currentPlayer!.player = player
         
         getPlaylist(ytdlUrl: ytdlUrl, completionHandler: { playlist in
             self.play(playlist, in:player)
         });
         
-        return playerController
+        return currentPlayer!
     }
 }

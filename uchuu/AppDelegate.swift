@@ -2,26 +2,28 @@ import Foundation
 import AVKit
 import UIKit
 
+var currentPlayer: AVPlayerViewController?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
     var backgroundedPlayer: AVPlayer?
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let shouldPresent = (currentPlayer == nil)
         let components = URLComponents(string: url.absoluteString)
         let playerController = YtdlService().getPlayerController(ytdlUrl: components!.queryItems![0].value!)
-
-        application.keyWindow?.rootViewController!.present(playerController, animated: true)
-
+        if (shouldPresent) {
+            application.keyWindow?.rootViewController!.present(playerController, animated: true)
+        }
         return true
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let audioSession = AVAudioSession.sharedInstance()
 
-        do { try audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback))) }
-        catch { print("Setting category to AVAudioSessionCategoryPlayback failed.") }
+        do { try audioSession.setCategory(.playback, mode: .moviePlayback) }
+        catch { print("Setting playback category failed.") }
 
         return true
     }
@@ -31,15 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
 
-    private func getCurrentPlayerController(_ application: UIApplication) -> AVPlayerViewController? {
-        NSLog("getting current player")
-        let presentedView = application.keyWindow?.rootViewController?.presentedViewController
-        return presentedView as? AVPlayerViewController
-    }
-
     func applicationDidEnterBackground(_ application: UIApplication) {
-        let playerController = getCurrentPlayerController(application)
-        if playerController != nil && playerController!.player != nil {            backgroundedPlayer = playerController!.player
+        let playerController = currentPlayer
+        if playerController != nil && playerController!.player != nil {
+            backgroundedPlayer = playerController!.player
         }
     }
 
@@ -51,10 +48,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-}
-
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-	return input.rawValue
 }
